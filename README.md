@@ -1,8 +1,8 @@
 # camnithm
 
-# !!! this is currently in WIP and does not work !!!
+# !!! this is currently in WIP and doesn't work perfectly !!!
 
-## Simple chunithm controller with opencv + hand detection
+## Simple Chunithm (Umiguri) controller with opencv + hand detection
 
 ---
 
@@ -34,7 +34,7 @@ pip install opencv-python mediapipe pydirectinput
 
 #### 3. Install [hand_landmarker.task](https://ai.google.dev/edge/mediapipe/solutions/vision/hand_landmarker?hl=zh-tw) and put it in the folder
 
-#### 4. Setup webcam correctly (persumably right above your hands)
+#### 4. Setup webcam correctly (persumably from the side with an angle pointing towards your hands)
 
 #### 5. Change some settings or code if needed
 

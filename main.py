@@ -91,7 +91,7 @@ def init_slider(result):
     average_x2 = 0
     idx = 0
     for i in pos:
-        average_z += i.z
+        average_z += i.y
 
         if idx == 17 or idx == 18 or idx == 19 or idx == 20:
             average_x1 += i.x
@@ -133,26 +133,26 @@ def press_keys(result):
     temp_keys_pressed = set([])
 
     for i in pos:
-        if i.z > sliderz + 1*deltaz:
+        if i.y > sliderz + 1*deltaz:
             if i.x < sliderx1 or i.x > sliderx2:
                 continue
 
             back_slider = "9kmjnhbgvfcdxsza"
             temp_keys_pressed.add(back_slider[math.floor((i.x-sliderx1) / (sliderx2-sliderx1)*16)])
-        elif i.z > sliderz:
+        elif i.y > sliderz - 1*deltaz:
             temp_keys_pressed.add('0')
-        elif i.z > sliderz - deltaz:
+        elif i.y > sliderz - 2*deltaz:
             temp_keys_pressed.add('o')
-        elif i.z > sliderz - 2*deltaz:
+        elif i.y > sliderz - 3*deltaz:
             temp_keys_pressed.add('l')
-        elif i.z > sliderz - 3*deltaz:
+        elif i.y > sliderz - 4*deltaz:
             temp_keys_pressed.add('p')
-        elif i.z > sliderz - 4*deltaz:
+        elif i.y > sliderz - 6*deltaz:
             temp_keys_pressed.add(',')
-        elif i.z > sliderz - 5*deltaz:
+        elif i.y > sliderz - 8*deltaz:
             temp_keys_pressed.add('.')
 
-    if tmp_cnt % 8 == 0:
+    if tmp_cnt % 6 == 0:
         for i in current_keys_pressed:
             pyautogui.keyUp(i)
 
@@ -160,13 +160,12 @@ def press_keys(result):
         tmp_cnt = 0
 
     for i in temp_keys_pressed:
-        if i not in current_keys_pressed:
-            pyautogui.keyDown(i)
-            current_keys_pressed.add(i)
+        pyautogui.keyDown(i)
+        current_keys_pressed.add(i)
 
 
 with HandLandmarker.create_from_options(options) as landmarker:
-    cap = cv2.VideoCapture(0) 
+    cap = cv2.VideoCapture(1) 
     #cap.set(cv2.CAP_PROP_FRAME_WIDTH, h)
     #cap.set(cv2.CAP_PROP_FRAME_HEIGHT, w)  
     print("Press Space to initialize the slider:")
